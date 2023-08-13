@@ -1,0 +1,14 @@
+res://scenes/interface/initial_screen.tscn
+res://resources/floor.tres
+res://resources/normal_decoration_tile.tres
+res://scenes/env/enemy_spawner.tscn
+res://scenes/management/level.tscn
+res://scenes/interface/player/stats/bar_container.tscn
+res://scenes/interface/general/hud.tscn
+res://scenes/interface/player/inventory/equipment_container.tscn
+res://scenes/player/player.tscn
+res://scenes/interface/player/stats/stats_container.tscn
+res://scenes/enemy/enemy_template.tscn
+res://scenes/enemy/whale.tscn
+res://scenes/enemy/pink_star.tscn
+res://scenes/enemy/crabby.tscn

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://uba3ldexp4vq"]
+
+[ext_resource type="Script" path="res://scripts/enemy/detection_area.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_template.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_texture.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/enemy/collision_area.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_attack_area.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://cbvol58df1mv0" path="res://scenes/env/floating_text.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://dl2ydmcfm02ar" path="res://assets/enemy/general/enemy_health_bar_background.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dcuckk1uukdlb" path="res://assets/enemy/general/health_bar.png" id="8"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_bar.gd" id="9"]
+
+[node name="EnemyTemplate" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("2")
+floating_text = ExtResource("6")
+
+[node name="Texture2D" type="Sprite2D" parent="." node_paths=PackedStringArray("attack_area_collision", "animation", "enemy")]
+script = ExtResource("3")
+attack_area_collision = NodePath("../EnemyAttackArea/Collision")
+animation = NodePath("../Animation")
+enemy = NodePath("..")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="." node_paths=PackedStringArray("enemy")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1")
+enemy = NodePath("..")
+
+[node name="Collision" type="CollisionShape2D" parent="DetectionArea"]
+
+[node name="CollisionArea" type="Area2D" parent="." node_paths=PackedStringArray("enemy", "enemy_bar")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("4")
+enemy = NodePath("..")
+enemy_bar = NodePath("../EnemyBar")
+
+[node name="Collision" type="CollisionShape2D" parent="CollisionArea"]
+
+[node name="Timer" type="Timer" parent="CollisionArea"]
+
+[node name="EnemyAttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5")
+
+[node name="Collision" type="CollisionShape2D" parent="EnemyAttackArea"]
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="FloorRay" type="RayCast2D" parent="."]
+
+[node name="EnemyBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -22.0
+offset_right = -32.0
+offset_bottom = -22.0
+script = ExtResource("9")
+
+[node name="BarBackground" type="TextureRect" parent="EnemyBar"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 17.0
+texture = ExtResource("7")
+
+[node name="HealthBar" type="TextureProgressBar" parent="EnemyBar/BarBackground"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -1.5
+offset_right = 28.0
+offset_bottom = 0.5
+value = 50.0
+texture_progress = ExtResource("8")
+
+[connection signal="body_entered" from="DetectionArea" to="DetectionArea" method="on_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="DetectionArea" method="on_body_exited"]
+[connection signal="area_entered" from="CollisionArea" to="CollisionArea" method="on_collision_area_entered"]
+[connection signal="timeout" from="CollisionArea/Timer" to="CollisionArea" method="on_timer_timeout"]
+[connection signal="animation_finished" from="Animation" to="Texture2D" method="on_animation_finished"]

@@ -1,0 +1,217 @@
+[gd_scene load_steps=12 format=3 uid="uid://boo45e1bgfgsr"]
+
+[ext_resource type="Texture2D" uid="uid://dut8pq0slpxpb" path="res://assets/interface/inventory/item_background/type_1.png" id="1"]
+[ext_resource type="FontFile" uid="uid://7ar10hkm4k86" path="res://assets/font/bit_potion.ttf" id="2"]
+[ext_resource type="Script" path="res://scripts/interface/player/equipment_container.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/interface/player/consumable_slot.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/interface/player/weapon_slot.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/interface/player/armor_slot.gd" id="6"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("2")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "hide_container"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "show_container"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_axpi2"]
+_data = {
+"RESET": SubResource("2"),
+"hide_container": SubResource("3"),
+"show_container": SubResource("4")
+}
+
+[node name="EquipmentContainer" type="Control"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -49.0
+offset_right = 49.0
+offset_bottom = -5.0
+grow_vertical = 0
+script = ExtResource("3")
+
+[node name="ConsumableBackground" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+texture = ExtResource("1")
+script = ExtResource("4")
+
+[node name="Item" type="TextureRect" parent="ConsumableBackground"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+expand_mode = 1
+
+[node name="Amount" type="Label" parent="ConsumableBackground"]
+visible = false
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -8.0
+offset_right = -2.0
+offset_bottom = -1.0
+theme_override_fonts/font = SubResource("1")
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(20, 44)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.0
+offset_bottom = 22.0
+
+[node name="WeaponBackground" type="TextureRect" parent="VContainer"]
+layout_mode = 2
+texture = ExtResource("1")
+script = ExtResource("5")
+
+[node name="Item" type="TextureRect" parent="VContainer/WeaponBackground"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+expand_mode = 1
+
+[node name="ArmorBackground" type="TextureRect" parent="VContainer"]
+layout_mode = 2
+texture = ExtResource("1")
+script = ExtResource("6")
+
+[node name="Item" type="TextureRect" parent="VContainer/ArmorBackground"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+expand_mode = 1
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_axpi2")
+}
+
+[connection signal="mouse_entered" from="ConsumableBackground" to="ConsumableBackground" method="on_mouse_entered"]
+[connection signal="mouse_exited" from="ConsumableBackground" to="ConsumableBackground" method="on_mouse_exited"]

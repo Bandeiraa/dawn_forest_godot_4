@@ -1,0 +1,268 @@
+[gd_scene load_steps=12 format=3 uid="uid://dud8p4t2qmi0r"]
+
+[ext_resource type="PackedScene" uid="uid://dhu0appf3fgn4" path="res://scenes/env/background.tscn" id="1"]
+[ext_resource type="FontFile" uid="uid://41ph20dlfvux" path="res://assets/font/thaleah_fat.ttf" id="2"]
+[ext_resource type="Script" path="res://scripts/interface/initial_screen.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://b1vt5lcd33llv" path="res://assets/player/char_blue.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bjl2hmrqhy36k" path="res://assets/player/char_red.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cutiaye4oocq8" path="res://assets/player/char_purple.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dxpoycnje6qoi" path="res://assets/player/char_green.png" id="7"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("2")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("2")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ysvp"]
+line_spacing = 0.0
+
+[sub_resource type="FontFile" id="3"]
+fallbacks = Array[Font]([ExtResource("2")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="InitialScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
+
+[node name="Background" parent="." instance=ExtResource("1")]
+can_process = true
+
+[node name="Menu" type="Control" parent="."]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GameName" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = SubResource("1")
+text = "Dawn 
+Forest"
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -77.0
+offset_right = -20.0
+offset_bottom = -9.0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Play" type="Button" parent="Menu/ButtonContainer" groups=["button"]]
+custom_minimum_size = Vector2(60, 18)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Label" type="Label" parent="Menu/ButtonContainer/Play"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("2")
+text = "Play"
+
+[node name="Continue" type="Button" parent="Menu/ButtonContainer" groups=["button"]]
+custom_minimum_size = Vector2(60, 18)
+layout_mode = 2
+focus_mode = 0
+disabled = true
+flat = true
+
+[node name="Label" type="Label" parent="Menu/ButtonContainer/Continue"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("2")
+text = "Continue"
+
+[node name="QuitButtonContainer" type="HBoxContainer" parent="Menu/ButtonContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Quit" type="Button" parent="Menu/ButtonContainer/QuitButtonContainer" groups=["button"]]
+custom_minimum_size = Vector2(58, 18)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Label" type="Label" parent="Menu/ButtonContainer/QuitButtonContainer/Quit"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("2")
+text = "Quit"
+horizontal_alignment = 2
+
+[node name="Margin" type="Control" parent="Menu/ButtonContainer/QuitButtonContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="SkinSelect" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackButton" type="Button" parent="SkinSelect" groups=["button"]]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_top = 12.0
+offset_right = -20.0
+offset_bottom = 27.0
+grow_horizontal = 0
+focus_mode = 0
+flat = true
+
+[node name="Label" type="Label" parent="SkinSelect/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("2")
+text = "Back"
+label_settings = SubResource("LabelSettings_0ysvp")
+
+[node name="PlaceholderText" type="Label" parent="SkinSelect"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.5
+offset_top = -25.0
+offset_right = 72.5
+offset_bottom = -10.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("3")
+text = "Please Select a Skin"
+
+[node name="SkinContainer" type="HBoxContainer" parent="SkinSelect"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -100.0
+offset_right = 114.0
+offset_bottom = -20.0
+
+[node name="Blue" type="Button" parent="SkinSelect/SkinContainer" groups=["button"]]
+custom_minimum_size = Vector2(54, 80)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Blue" type="TextureRect" parent="SkinSelect/SkinContainer/Blue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Green" type="Button" parent="SkinSelect/SkinContainer" groups=["button"]]
+custom_minimum_size = Vector2(54, 80)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Green" type="TextureRect" parent="SkinSelect/SkinContainer/Green"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("7")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Purple" type="Button" parent="SkinSelect/SkinContainer" groups=["button"]]
+custom_minimum_size = Vector2(54, 80)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Purple" type="TextureRect" parent="SkinSelect/SkinContainer/Purple"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("6")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Red" type="Button" parent="SkinSelect/SkinContainer" groups=["button"]]
+custom_minimum_size = Vector2(54, 80)
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Red" type="TextureRect" parent="SkinSelect/SkinContainer/Red"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 1

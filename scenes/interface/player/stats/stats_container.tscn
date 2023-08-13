@@ -1,0 +1,752 @@
+[gd_scene load_steps=42 format=3 uid="uid://dh4v8jsbafuk0"]
+
+[ext_resource type="Texture2D" uid="uid://bhp3v1ybmcfet" path="res://assets/interface/stats/background/right_stats_background.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bk5x1m2tmqumx" path="res://assets/interface/stats/icon/mana_icon.png" id="2"]
+[ext_resource type="Script" path="res://scripts/interface/stats/right_container.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://j40rqwsg12x2" path="res://assets/interface/stats/icon/health_icon.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://by6w4x8qykhkb" path="res://assets/interface/stats/icon/attack_icon.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://daljq06gcwwys" path="res://assets/interface/stats/icon/magic_attack_icon.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://fwe6miwv6ltu" path="res://assets/interface/stats/icon/shield_icon.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://d1fbkagnqbxt" path="res://assets/interface/stats/stats_info_container.png" id="8"]
+[ext_resource type="Script" path="res://scripts/interface/stats/stats_container.gd" id="9"]
+[ext_resource type="Texture2D" uid="uid://ccgatn2ci343w" path="res://assets/interface/stats/text/stats_text/big/health.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://d0rxlku3265s" path="res://assets/interface/stats/points_info_container.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://deeyjormg55xp" path="res://assets/interface/stats/background/stats_text_background.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://cu0pgy0dedi2x" path="res://assets/interface/stats/text/stats_text.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bjjald6h64spf" path="res://assets/interface/stats/background/left_stats_background.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://s6ktb7r8b8lc" path="res://assets/interface/stats/text/knight_class_text.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://8p35xe6xbpqo" path="res://assets/interface/stats/text/avaliable_points.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://cohu6fsqeduly" path="res://assets/interface/stats/icon/increase_stats_icon.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://cv6qbasihwwyq" path="res://assets/interface/stats/text/stats_text/big/mana.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://bvtp8m7pb6oe4" path="res://assets/interface/stats/text/stats_text/big/attack.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://cntwv5tai5nml" path="res://assets/interface/stats/text/stats_text/big/magic_attack.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://b8c1iiwlhqv3t" path="res://assets/interface/stats/text/stats_text/big/defense.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://cu01s5lrw5ysu" path="res://assets/interface/stats/text/stats_text/small/magic_attack.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://c44dlnj343uxd" path="res://assets/interface/stats/text/player_total.png" id="23"]
+[ext_resource type="FontFile" uid="uid://41ph20dlfvux" path="res://assets/font/thaleah_fat.ttf" id="24"]
+[ext_resource type="Script" path="res://scripts/interface/stats/left_container.gd" id="25"]
+[ext_resource type="Script" path="res://scripts/interface/stats/stats_info.gd" id="26"]
+[ext_resource type="Script" path="res://scripts/interface/stats/points_info.gd" id="27"]
+
+[sub_resource type="Animation" id="5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="8"]
+resource_name = "hide_container"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 90), Vector2(7, 90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "show_container"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7, 90), Vector2(100, 90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpwba"]
+_data = {
+"RESET": SubResource("5"),
+"hide_container": SubResource("8"),
+"show_container": SubResource("4")
+}
+
+[sub_resource type="Animation" id="13"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(218, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="14"]
+resource_name = "hide_container"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(108, 42), Vector2(218, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="12"]
+resource_name = "show_container"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(218, 42), Vector2(108, 42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8kmvr"]
+_data = {
+"RESET": SubResource("13"),
+"hide_container": SubResource("14"),
+"show_container": SubResource("12")
+}
+
+[sub_resource type="FontFile" id="6"]
+fallbacks = Array[Font]([ExtResource("24")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("24")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Animation" id="10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="11"]
+resource_name = "hide_container"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="9"]
+resource_name = "show_container"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxis2"]
+_data = {
+"RESET": SubResource("10"),
+"hide_container": SubResource("11"),
+"show_container": SubResource("9")
+}
+
+[node name="StatsContainer" type="Control" node_paths=PackedStringArray("animation", "left_container", "right_container")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9")
+animation = NodePath("Animation")
+left_container = NodePath("LeftContainer")
+right_container = NodePath("RightContainer")
+
+[node name="StatsInfo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = 42.0
+offset_right = 87.0001
+offset_bottom = 122.0
+texture = ExtResource("8")
+script = ExtResource("26")
+
+[node name="Animation" type="AnimationPlayer" parent="StatsInfo"]
+libraries = {
+"": SubResource("AnimationLibrary_jpwba")
+}
+
+[node name="TargetStat" type="TextureRect" parent="StatsInfo"]
+custom_minimum_size = Vector2(45, 6)
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0001
+offset_top = 8.0
+offset_right = 24.9999
+offset_bottom = 14.0
+texture = ExtResource("22")
+stretch_mode = 4
+
+[node name="PlayerTotal" type="TextureRect" parent="StatsInfo"]
+custom_minimum_size = Vector2(45, 6)
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0001
+offset_top = 35.0
+offset_right = 36.9999
+offset_bottom = 41.0
+texture = ExtResource("23")
+stretch_mode = 4
+
+[node name="Stat" type="TextureRect" parent="StatsInfo"]
+custom_minimum_size = Vector2(45, 6)
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0001
+offset_top = 44.0
+offset_right = 24.9999
+offset_bottom = 50.0
+texture = ExtResource("22")
+stretch_mode = 4
+
+[node name="PointsInfo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 218.0
+offset_top = 42.0
+offset_right = 298.0
+offset_bottom = 122.0
+texture = ExtResource("11")
+script = ExtResource("27")
+
+[node name="Animation" type="AnimationPlayer" parent="PointsInfo"]
+libraries = {
+"": SubResource("AnimationLibrary_8kmvr")
+}
+
+[node name="Text" type="TextureRect" parent="PointsInfo"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = 8.0
+offset_right = 25.0
+offset_bottom = 21.0
+texture = ExtResource("16")
+
+[node name="AvaliablePoints" type="Label" parent="PointsInfo"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -7.0
+offset_right = 38.0
+offset_bottom = 8.0
+theme_override_fonts/font = SubResource("6")
+text = "0"
+
+[node name="Class" type="TextureRect" parent="PointsInfo"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -12.0
+offset_right = 16.0
+offset_bottom = -6.0
+texture = ExtResource("15")
+
+[node name="LeftContainer" type="TextureRect" parent="." node_paths=PackedStringArray("grid_container", "stats_info")]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -138.0
+offset_right = 106.0
+offset_bottom = -26.0
+texture = ExtResource("14")
+script = ExtResource("25")
+grid_container = NodePath("GridContainer")
+stats_info = NodePath("../StatsInfo")
+
+[node name="GridContainer" type="GridContainer" parent="LeftContainer"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -48.0
+offset_right = 45.0
+offset_bottom = 48.0
+
+[node name="HealthContainer" type="HBoxContainer" parent="LeftContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Texture2D" type="TextureRect" parent="LeftContainer/GridContainer/HealthContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("4")
+expand_mode = 1
+
+[node name="Text" type="Label" parent="LeftContainer/GridContainer/HealthContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100 +"
+
+[node name="Bonus" type="Label" parent="LeftContainer/GridContainer/HealthContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100"
+
+[node name="ManaContainer" type="HBoxContainer" parent="LeftContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Texture2D" type="TextureRect" parent="LeftContainer/GridContainer/ManaContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="Text" type="Label" parent="LeftContainer/GridContainer/ManaContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100 +"
+
+[node name="Bonus" type="Label" parent="LeftContainer/GridContainer/ManaContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100"
+
+[node name="AttackContainer" type="HBoxContainer" parent="LeftContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Texture2D" type="TextureRect" parent="LeftContainer/GridContainer/AttackContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="Text" type="Label" parent="LeftContainer/GridContainer/AttackContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100 +"
+
+[node name="Bonus" type="Label" parent="LeftContainer/GridContainer/AttackContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100"
+
+[node name="MagicAttackContainer" type="HBoxContainer" parent="LeftContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Texture2D" type="TextureRect" parent="LeftContainer/GridContainer/MagicAttackContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("6")
+expand_mode = 1
+
+[node name="Text" type="Label" parent="LeftContainer/GridContainer/MagicAttackContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100 +"
+
+[node name="Bonus" type="Label" parent="LeftContainer/GridContainer/MagicAttackContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100"
+
+[node name="DefenseContainer" type="HBoxContainer" parent="LeftContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Texture2D" type="TextureRect" parent="LeftContainer/GridContainer/DefenseContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("7")
+expand_mode = 1
+
+[node name="Text" type="Label" parent="LeftContainer/GridContainer/DefenseContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100 +"
+
+[node name="Bonus" type="Label" parent="LeftContainer/GridContainer/DefenseContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "100"
+
+[node name="RightContainer" type="TextureRect" parent="." node_paths=PackedStringArray("v_container", "points_info")]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -138.0
+offset_right = -10.0
+offset_bottom = -10.0
+texture = ExtResource("1")
+script = ExtResource("3")
+v_container = NodePath("VContainer")
+points_info = NodePath("../PointsInfo")
+
+[node name="VContainer" type="VBoxContainer" parent="RightContainer"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -48.0
+offset_right = 51.5
+offset_bottom = 48.0
+
+[node name="HealthContainer" type="HBoxContainer" parent="RightContainer/VContainer"]
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="RightContainer/VContainer/HealthContainer"]
+custom_minimum_size = Vector2(83, 0)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Margin" type="Control" parent="RightContainer/VContainer/HealthContainer/VContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="RightContainer/VContainer/HealthContainer/VContainer"]
+layout_mode = 2
+texture = ExtResource("10")
+
+[node name="Plus" type="TextureButton" parent="RightContainer/VContainer/HealthContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17")
+
+[node name="ManaContainer" type="HBoxContainer" parent="RightContainer/VContainer"]
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="RightContainer/VContainer/ManaContainer"]
+custom_minimum_size = Vector2(83, 0)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Margin" type="Control" parent="RightContainer/VContainer/ManaContainer/VContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="RightContainer/VContainer/ManaContainer/VContainer"]
+layout_mode = 2
+texture = ExtResource("18")
+
+[node name="Plus" type="TextureButton" parent="RightContainer/VContainer/ManaContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17")
+
+[node name="AttackContainer" type="HBoxContainer" parent="RightContainer/VContainer"]
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="RightContainer/VContainer/AttackContainer"]
+custom_minimum_size = Vector2(83, 0)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Margin" type="Control" parent="RightContainer/VContainer/AttackContainer/VContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="RightContainer/VContainer/AttackContainer/VContainer"]
+layout_mode = 2
+texture = ExtResource("19")
+
+[node name="Plus" type="TextureButton" parent="RightContainer/VContainer/AttackContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17")
+
+[node name="MagicAttackContainer" type="HBoxContainer" parent="RightContainer/VContainer"]
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="RightContainer/VContainer/MagicAttackContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Margin" type="Control" parent="RightContainer/VContainer/MagicAttackContainer/VContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="RightContainer/VContainer/MagicAttackContainer/VContainer"]
+layout_mode = 2
+texture = ExtResource("20")
+
+[node name="Plus" type="TextureButton" parent="RightContainer/VContainer/MagicAttackContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17")
+
+[node name="DefenseContainer" type="HBoxContainer" parent="RightContainer/VContainer"]
+layout_mode = 2
+
+[node name="VContainer" type="VBoxContainer" parent="RightContainer/VContainer/DefenseContainer"]
+custom_minimum_size = Vector2(83, 0)
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Margin" type="Control" parent="RightContainer/VContainer/DefenseContainer/VContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="RightContainer/VContainer/DefenseContainer/VContainer"]
+layout_mode = 2
+texture = ExtResource("21")
+
+[node name="Plus" type="TextureButton" parent="RightContainer/VContainer/DefenseContainer"]
+layout_mode = 2
+texture_normal = ExtResource("17")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hxis2")
+}
+
+[node name="TextBackground" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = 5.0
+offset_right = 33.0
+offset_bottom = 17.0
+texture = ExtResource("12")
+
+[node name="Text" type="TextureRect" parent="TextBackground"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -9.0
+offset_right = 15.0
+offset_bottom = -3.0
+texture = ExtResource("13")
